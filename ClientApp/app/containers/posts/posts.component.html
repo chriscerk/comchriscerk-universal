@@ -1,0 +1,29 @@
+<h1>This is a RestAPI Example (hitting WebAPI in our case)</h1>
+
+<blockquote>
+  Let's get some fake posts from Rest:<br>
+  You can find the Web API Routes in <code>{{ "/Server/RestAPI/ ... "}}</code>
+</blockquote>
+
+<div>
+  <label>Post name:</label> <input #postName />
+  <button class="btn btn-default" (click)="addPost(postName.value); postName.value=''">
+    Add
+  </button>
+</div>
+
+<p *ngIf="!posts"><em>Loading...</em></p>
+<h2>Posts</h2>
+<ul class="posts">
+  <li *ngFor="let post of posts"
+      [class.selected]="post === selectedPost"
+      (click)="onSelect(post)"
+      [@flyInOut]>
+    <span class="badge">{{post.id}}</span> {{post.name}}
+    <button class="delete"
+            (click)="deletePost(post); $event.stopPropagation()">
+      x
+    </button>
+  </li>
+</ul>
+<app-post-detail (postUpdate)="onPostUpdate($event)" [post]="selectedPost"></app-post-detail>

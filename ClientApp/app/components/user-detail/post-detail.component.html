@@ -1,0 +1,9 @@
+﻿<div *ngIf="post">
+  <h2>{{post.name}} details:</h2>
+  <div><label>id: </label>{{post.id}}</div>
+  <div>
+    <label>name: </label>
+    <input [(ngModel)]="post.name" placeholder="name" #details="ngModel" />
+  </div>
+  <button [class.disabled]="details.pristine" class="btn btn-success" (click)="updateUser(post)">Save</button>
+</div>
