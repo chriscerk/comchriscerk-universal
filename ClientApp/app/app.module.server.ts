@@ -17,12 +17,7 @@ import { ServerPrebootModule } from 'preboot/server';
 
     ServerModule,
     ServerPrebootModule.recordEvents({ appRoot: 'app-root' }),
-    NoopAnimationsModule,
-
-    // HttpTransferCacheModule still needs fixes for 5.0
-    //   Leave this commented out for now, as it breaks Server-renders
-    //   Looking into fixes for this! - @MarkPieszak
-    // ServerTransferStateModule // <-- broken for the time-being with ASP.NET
+    NoopAnimationsModule
   ]
 })
 export class AppModule {

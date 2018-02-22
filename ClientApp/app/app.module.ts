@@ -93,11 +93,11 @@ export function createTranslateLoader(http: HttpClient, baseHref) {
             {
                 path: 'posts', component: PostsComponent,
                 data: {
-                    title: 'Users REST example',
+                    title: 'Blog Posts',
                     meta: [{ name: 'description', content: 'This is User REST API example page Description!' }],
                     links: [
                         { rel: 'canonical', href: 'http://blogs.example.com/chat/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/users' }
+                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/posts' }
                     ]
                 }
             },

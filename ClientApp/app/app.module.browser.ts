@@ -23,10 +23,7 @@ export function getRequest() {
     imports: [
         BrowserPrebootModule.replayEvents(),
         BrowserAnimationsModule,
-
-        // Our Common AppModule
         AppModuleShared
-
     ],
     providers: [
         {
