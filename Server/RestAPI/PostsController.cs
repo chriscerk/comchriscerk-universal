@@ -16,13 +16,16 @@ namespace AspCoreServer.Controllers
     private FirestoreDb _firestore;
     public PostsController()
     {
-        var projectId = "";
+        // NOTE: FirestoreDB.Create tries to access global environment variables
+        string value = Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", EnvironmentVariableTarget.User);
+        var projectId = "comchriscerk";
         _firestore = FirestoreDb.Create(projectId);
     }
 
     [HttpGet]
-    public async Task<IActionResult> Get(int currentPageNo = 1, int pageSize = 20)
+    public async Task<IActionResult> Get()
     {
+      // http://googlecloudplatform.github.io/google-cloud-dotnet/docs/Google.Cloud.Firestore/datamodel.html
       CollectionReference collection = _firestore.Collection("posts");
       QuerySnapshot snapshot = await collection.SnapshotAsync();
 
@@ -38,10 +41,8 @@ namespace AspCoreServer.Controllers
       {
         return NotFound("Posts not Found");
       }
-      else
-      {
-        return Ok(posts.OrderByDescending(u => u.EntryTime));
-      }
+
+      return Ok(posts.OrderByDescending(u => u.EntryTime));
     }
 
     [HttpGet("{id}")]
