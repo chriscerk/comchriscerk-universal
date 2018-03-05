@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using System.Diagnostics;
 using System;
 using Asp2017.Server.Models;
+using System.Collections.Generic;
 
 namespace AspCoreServer.Controllers
 {
@@ -28,6 +29,7 @@ namespace AspCoreServer.Controllers
       ViewData["Meta"] = prerenderResult.Globals["meta"]; // set our <meta> SEO tags
       ViewData["Links"] = prerenderResult.Globals["links"]; // set our <link rel="canonical"> etc SEO tags
       ViewData["TransferData"] = prerenderResult.Globals["transferData"]; // our transfer data set to window.TRANSFER_CACHE = {};
+      ViewData["Title"] = new KeyValuePair<string, string>("title", "Hello World");
 
       return View();
     }
